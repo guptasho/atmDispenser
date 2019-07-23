@@ -1,5 +1,4 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import ATMForm from './ATMform';
 import Output from './output';
 
@@ -32,15 +31,4 @@ class App extends React.Component {
   }
 }
 
-class Test extends React.Component {
-  render() {
-    return <div>Hi from test</div>
-  }
-}
-
-function AppTop() {
-  return React.createElement("div",[],React.createElement(App))
-}
-ReactDOM.render(React.createElement(AppTop), document.getElementById('root'))
-
-export default AppTop;
+export default App;
