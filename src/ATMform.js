@@ -22,8 +22,7 @@ getDenominations (amount) {
   }
 
   getDenominationsAndSend() {
-      this.getDenominations();
-      this.props.setDenominations();
+     this.props.setDenominations(this.getDenominations(this.state.amount));
   }
   setAmount (inputAmount){ 
     this.setState({amount: inputAmount});
@@ -31,19 +30,19 @@ getDenominations (amount) {
 
     render() {
         return (
-            <div class="withdrawal-panel">
+            <div className="withdrawal-panel">
               <h2><b>Welcome to ATM</b></h2>
               <form onSubmit={(e) => {
                 e.preventDefault();
-                getDenominationsAndSend();
+this.getDenominationsAndSend();
               }}>
                 <label htmlFor="amount">
                   Enter the Amount
                 <input
                     id="amount"
-                    value={amount}
+                    value={this.state.amount}
                     placeholder="amount"
-                    onChange={e => setAmount(e.target.value)}
+                    onChange={e => this.setAmount(e.target.value)}
                   />
                 </label>
                 <button>Get Money</button>

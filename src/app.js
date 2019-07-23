@@ -1,28 +1,28 @@
 import React from "react";
-import { render } from "react-dom";
+import ReactDOM from "react-dom";
 import ATMForm from './ATMform';
 import Output from './output';
 
 class App extends React.Component {
-  constructor() {
+  constructor(props) {
     super(props);
-    this.state({denomArr: []})
+    this.state = {denomArr: []};
   }
 
   readDenominations(outputArray){
     this.setState({denomArr: outputArray})
   }
   render() {
-    const {denominations} = this.state;
+    const {denomArr} = this.state;
     return (
       <div>
-        <div class="container">
-          <div class="master-header">
-            <h1 class="heading">ATM Money Dispenser</h1>
+        <div className="container">
+          <div className="master-header">
+            <h1 className="heading">ATM Money Dispenser</h1>
           </div>
-          <div class="content">
-            <ATMForm setDenominations={readDenominations}/>
-            {denominations.length && 
+          <div className="content">
+            <ATMForm setDenominations={this.readDenominations.bind(this)}/>
+            {denomArr.length && 
               <Output denominationsOutput={denomArr} />
             }
           </div>
@@ -32,4 +32,15 @@ class App extends React.Component {
   }
 }
 
-export default App;
+class Test extends React.Component {
+  render() {
+    return <div>Hi from test</div>
+  }
+}
+
+function AppTop() {
+  return React.createElement("div",[],React.createElement(App))
+}
+ReactDOM.render(React.createElement(AppTop), document.getElementById('root'))
+
+export default AppTop;
